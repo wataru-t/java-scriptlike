@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="scriptlike" basedir="." default="jar">
+
+  <property name="src.dir" value="src" />
+  <property name="classes.dir" value="classes" />
+  <property name="lib.dir" value="lib" />
+  <property name="jar.name" value="${ant.project.name}" />
+
+  <target name="compile">
+    <mkdir dir="${classes.dir}" />
+    <javac srcdir="${src.dir}" destdir="${classes.dir}">
+      <exclude name="**/*Test.java" />
+      <classpath>
+	<pathelement path="${basedir}/${lib.dir}/s2util-0.0.0.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="${jar.name}.jar" basedir="${classes.dir}" />
+  </target>
+  
+</project>
